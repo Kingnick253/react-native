@@ -20,7 +20,7 @@ const Home = () => {
                             <ScreenHeaderBtn iconUrl={icons.menu} dimension ="60%" />
                           ),
                           headerRight: () => (
-                            <ScreenHeaderBtn iconUrl={icons.profile} dimension ="1000%" />
+                            <ScreenHeaderBtn iconUrl={images.profile} dimension ="100%" />
                           ),
                         // This hides the Index name for the title 
                           headerTitle: ""
