@@ -15,16 +15,35 @@ const Home = () => {
             <Stack.Screen
                 options={{headerStyle: {backgroundColor: COLORS.lightWhite}, 
                           headerShadowVisible: false,
+                        //   these two headerLeft and headerRight adds the menus on the right and left side.
                           headerLeft: () => (
                             <ScreenHeaderBtn iconUrl={icons.menu} dimension ="60%" />
                           ),
                           headerRight: () => (
                             <ScreenHeaderBtn iconUrl={icons.profile} dimension ="1000%" />
                           ),
+                        // This hides the Index name for the title 
+                          headerTitle: ""
                                           
             }}
             
             />
+                {/* this prop showsVScroll gets rid of the in scroll indicator on the right hand side when set to false */}
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View
+                    style={{
+                        flex: 1,
+                        padding: SIZES.medium
+                    }}
+                >
+                    <Welcome
+                    
+                    />
+                    <Popularjobs />
+                    <Nearbyjobs />
+                </View>
+
+            </ScrollView>
         </SafeAreaView>
     )
 }
