@@ -18,10 +18,24 @@ const Welcome = () => {
       </View>
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
-        <TextInput
+          {/* this is the search box the user will use to navigate what kind of job they are looking for. */}
+        <TextInput 
           style={styles.searchInput}
+          // this value will be a new state field 
+          value=''
+          onChange={() => {}}
+          placeholder="What are you looking for?"
+          placeholderTextColor="black"
         />
        </View>
+
+      <TouchableOpacity>
+        {/* this is adding a search button icon for the user to click when they fill in the container */}
+        <Image
+          source={icons.search}
+        />
+      </TouchableOpacity>
+
       </View>
     </View>
   )
