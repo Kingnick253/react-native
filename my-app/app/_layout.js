@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";    
 import { useCallback } from "react";
-import { useFont } from "expo-font";
+import { useFonts } from "expo-font";
 // this is importing everything
 import * as SplashScreen from 'expo-splash-screen';
 // Makes the native splash screen (configured in app.json) remain visible until hideAsync is called.
@@ -19,6 +19,7 @@ const Layout = () => {
 
     }, [fontsLoaded])
 
+    if(!fontsLoaded) return null;
     return <Stack  />;
 }
 
