@@ -37,8 +37,10 @@ const Popularjobs = () => {
                 item={item}
               />
             )}
-            // keyExtractor={item => item?.job_id}
-          
+            // Again same similar to .map in regular react
+            keyExtractor={item => item?.job_id}
+              contentContainerStyle={{ columnGap: SIZES.medium}}
+              horizontal
           />
         )}
 
