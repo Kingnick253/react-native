@@ -5,13 +5,14 @@ import { useRouter } from 'expo-router';
 import { COLORS, SIZES } from '../../../constants';
 import  PopularJobCard  from '../../common/cards/popular/PopularJobCard';
 import styles from './popularjobs.style';
- 
+import useFetch from "../../../hook/useFetch";
 
 const Popularjobs = () => {
   const router = useRouter();
-  const isLoading = false;
-  const error = false;
+  const { data, isLoading, error } = useFetch ("search",
+  { query: 'React Developer', num_pages: 1, })
 
+  console.log(data);
   return (
     // title section
     <View style={styles.container}>
@@ -31,7 +32,7 @@ const Popularjobs = () => {
         ) : (
           <FlatList 
           // test data till api is connected
-            data={[1,2,3,4]}
+            data={data}
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
@@ -51,4 +52,4 @@ const Popularjobs = () => {
   )
 }
 
-export default Popularjobs
+export default Popularjobs;
