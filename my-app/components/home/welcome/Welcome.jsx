@@ -6,9 +6,12 @@ import { useRouter } from 'expo-router';
 import {icons, SIZES } from '../../../constants'
 import styles from './welcome.style'
 
+const jobTypes = ["Full-time", "Part-time", "Contractor"];
+
 const Welcome = () => {
   // declaring router
   const router = useRouter();
+  const [activeJobType, setActiveJobType] = useState("Full-time")
 
   return (
     <View>
@@ -28,15 +31,36 @@ const Welcome = () => {
           placeholderTextColor="black"
         />
        </View>
-
-      <TouchableOpacity>
+      {/* added styling to the button with and empty callback function, will add more later on. */}
+      <TouchableOpacity style={styles.searchBtn} onPress={() => {}}> 
         {/* this is adding a search button icon for the user to click when they fill in the container */}
         <Image
           source={icons.search}
+          resizeMode='contain'
+          style={styles.searchBtnImage}
         />
       </TouchableOpacity>
-
       </View>
+      {/* for the Flatlist  */}
+      <View style={styles.tabsContainer}>
+        <FlatList
+          data ={jobTypes}
+          renderItem={( { item }) =>(
+            <TouchableOpacity
+            style={styles.tab(activeJobType, item)}
+            // this is going to change the state of the activeJobType when clicked.
+            onPress={() => {setActiveJobType(item);
+              // adding the router push will send the item they pressed to the search page
+              router.push(`/search/${item}`)
+            }}
+            >
+              <Text>{item}</Text>
+            </TouchableOpacity>
+          )}
+        />
+        
+      </View>
+
     </View>
   )
 }
