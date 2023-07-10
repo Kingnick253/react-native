@@ -54,9 +54,15 @@ const Welcome = () => {
               router.push(`/search/${item}`)
             }}
             >
-              <Text>{item}</Text>
+              {/* this styling will highlight the tab that is currently pressed. */}
+              <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
             </TouchableOpacity>
           )}
+          // this is basically the unique key id from react's map 
+          keyExtractor={item => item}
+          // this is formatting how the buttons are going to be aligned, making them all fit in one row and scroll horizontally.
+          contentContainerStyle={{ columnGap: SIZES.small}}
+          horizontal
         />
         
       </View>
