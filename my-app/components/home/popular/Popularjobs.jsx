@@ -3,13 +3,13 @@ import { useState } from 'react';
 import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { COLORS, SIZES } from '../../../constants';
-import { PopularJobCard } from '../../common/cards/popular/PopularJobCard';
+import  PopularJobCard  from '../../common/cards/popular/PopularJobCard';
+import styles from './popularjobs.style';
  
-import styles from './popularjobs.style'
 
 const Popularjobs = () => {
   const router = useRouter();
-  const isLoading = true;
+  const isLoading = false;
   const error = false;
 
   return (
@@ -30,7 +30,14 @@ const Popularjobs = () => {
           <Text>Something went wrong </Text>
         ) : (
           <FlatList 
-          
+          // test data till api is connected
+            data={[1,2,3,4]}
+            renderItem={({ item }) => (
+              <PopularJobCard
+                item={item}
+              />
+            )}
+            // keyExtractor={item => item?.job_id}
           
           />
         )}
