@@ -44,4 +44,4 @@ const Nearbyjobs = () => {
   )
 }
 
-export default Nearbyjobs;
+export default Nearbyjobs
