@@ -5,6 +5,8 @@ import { useCallback, useState } from 'react'
 import { Company, JobAbout,JobFooter,JobTabs, ScreenHeaderBtn, Specifics} from '../../components';
 import {COLORS, icons, SIZES } from '../../constants'
 import useFetch from '../../hook/useFetch';
+// Array containning each tab option
+const tabs = ["About", "Qualifications", "Responsibilites"];
 
 const JobDetails = () => {
     // this will get the job id of the page the user is on
@@ -16,6 +18,9 @@ const JobDetails = () => {
     })
 
     const [refreshing, setRefreshing] = useState(false);
+    // this state will update the tab the user is on.
+    const [activeTab, setActiveTab] = useState(tabs[0]);
+
     const onRefresh = () => {}
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightwhite }}>
@@ -51,12 +56,18 @@ const JobDetails = () => {
                 <Text>No DATA</Text>
             ) : (
                 <View style={{padding: SIZES.medium, paddingBottom: 100}}>
+                    {/* Company data being printed on the page */}
                     <Company
-                    
+                        companyLogo={data[0].employer_logo}
+                        jobTitle={data[0].job_title}
+                        companyName={data[0].employer_Name}
+                        Location={data[0].job_country}
                     />
                     <JobTabs
-                    
-                    
+                        tabs={tabs}
+                        activeTab={activeTab}
+                        setActiveTab={setActiveTab}
+
                     />
 
                 </View>
