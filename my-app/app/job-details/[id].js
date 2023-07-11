@@ -31,7 +31,11 @@ const JobDetails = () => {
                     // ?? if it doesnt have either highlights or qualifications then na will display
                     points={data[0].job_highlights?.Qualifications ?? ['N/A']}
                 />
-            case "about":
+            case "About":
+                return <JobAbout
+                    info={data[0].job_description ?? "No information Provided :("}
+
+                />
             case "Responsibilites":
               
             default:
