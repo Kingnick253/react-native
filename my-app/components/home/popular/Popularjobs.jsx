@@ -11,8 +11,13 @@ const Popularjobs = () => {
   const router = useRouter();
   const { data, isLoading, error } = useFetch ("search",
   { query: 'React Developer', num_pages: 1, })
-
   console.log(data);
+
+  const [selectedJob, setSelectedJob] = useState()
+  const handleCardPress = (item) =>{
+    
+  }
+
   return (
     // title section
     <View style={styles.container}>
