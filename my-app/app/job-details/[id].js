@@ -39,7 +39,6 @@ const JobDetails = () => {
             case "Responsibilities":
                 return <Specifics
                     title="Responsibilities"
-                    // ?? if it doesnt have either highlights or qualifications then na will display
                     points={data[0].job_highlights?.Responsibilities ?? ['N/A']}
                 />
               
@@ -98,6 +97,8 @@ const JobDetails = () => {
                 </View>
             )}
             </ScrollView>
+            {/* this sits just under the scrollview so it remains on the bottom like a footer should  */}
+            <JobFooter url={data[0]?.job_google_link ?? 'https://careers.google.com/jobs/results'}/>
         </>
 
     </SafeAreaView>
