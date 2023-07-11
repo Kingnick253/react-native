@@ -29,7 +29,7 @@ const JobDetails = () => {
                 return <Specifics
                     title="Qualifications"
                     // ?? if it doesnt have either highlights or qualifications then na will display
-                    points={data[0].job_highlights?.qualifications ?? ['N/A']}
+                    points={data[0].job_highlights?.Qualifications ?? ['N/A']}
                 />
             case "about":
             case "Responsibilites":
