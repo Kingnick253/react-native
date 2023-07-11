@@ -5,12 +5,12 @@ import { useCallback, useState } from 'react'
 import { Company, JobAbout,JobFooter,JobTabs, ScreenHeaderBtn, Specifics} from '../../components';
 import {COLORS, icons, SIZES } from '../../constants'
 import useFetch from '../../hook/useFetch';
-// Array containning each tab option
+// Array containing each tab option
 const tabs = ["About", "Qualifications", "Responsibilities"];
 
 const JobDetails = () => {
     // this will get the job id of the page the user is on
-    const params =useSearchParams();
+    const params = useSearchParams();
     const router = useRouter();
 
     const {data, isLoading, error, refetch } = useFetch('job-details', {
@@ -21,7 +21,11 @@ const JobDetails = () => {
     // this state will update the tab the user is on.
     const [activeTab, setActiveTab] = useState(tabs[0]);
 
-    const onRefresh = () => {}
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+        refetch()
+        setRefreshing(false)
+      }, []);
     const displayTabContent = () =>{
         // this is switch case is where all the information for the each tab will be come from
         switch (activeTab) {

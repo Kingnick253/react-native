@@ -14,8 +14,9 @@ const Popularjobs = () => {
   console.log(data);
 
   const [selectedJob, setSelectedJob] = useState()
-  const handleCardPress = (item) =>{
-    
+  const handleCardPress = (item) => {
+    router.push(`/job-detail/${item.job_id}`);
+    setSelectedJob(item.job_id)
   }
 
   return (
@@ -29,32 +30,28 @@ const Popularjobs = () => {
       </View>
       {/* the rest of the content */}
       <View style={styles.cardsContainer}>
-        
         {isLoading ? (
-          <ActivityIndicator size="large" colors={COLORS.primary} />
+          <ActivityIndicator size='large' color={COLORS.primary} />
         ) : error ? (
-          <Text>Something went wrong </Text>
+          <Text>Something went wrong</Text>
         ) : (
-          <FlatList 
-          // test data till api is connected
+          <FlatList
             data={data}
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
+                selectedJob={selectedJob}
+                handleCardPress={handleCardPress}
               />
             )}
-            // Again same similar to .map in regular react
-            keyExtractor={item => item?.job_id}
-              contentContainerStyle={{ columnGap: SIZES.medium}}
-              horizontal
+            keyExtractor={(item) => item.job_id}
+            contentContainerStyle={{ columnGap: SIZES.medium }}
+            horizontal
           />
         )}
-
-
-
       </View>
     </View>
-  )
-}
+  );
+};
 
 export default Popularjobs;

@@ -26,7 +26,7 @@ const Welcome = ({searchTerm, setSearchTerm, handleClick }) => {
           style={styles.searchInput}
           // this value will be a new state field 
           value={searchTerm}
-          onChange={(text) => setSearchTerm(text)}
+          onChangeText={(text) => setSearchTerm(text)}
           placeholder="What are you looking for?"
           placeholderTextColor="black"
         />
