@@ -22,6 +22,22 @@ const JobDetails = () => {
     const [activeTab, setActiveTab] = useState(tabs[0]);
 
     const onRefresh = () => {}
+    const displayTabContent = () =>{
+        // this is switch case is where all the information for the each tab will be come from
+        switch (activeTab) {
+            case "Qualifications":
+                return <Specifics
+                    title="Qualifications"
+                    // ?? if it doesnt have either highlights or qualifications then na will display
+                    points={data[0].job_highlights?.qualifications ?? ['N/A']}
+                />
+            case "about":
+            case "Responsibilites":
+              
+            default:
+                break;
+        }
+    }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightwhite }}>
 
@@ -69,7 +85,7 @@ const JobDetails = () => {
                         setActiveTab={setActiveTab}
 
                     />
-
+                    {displayTabContent()}
                 </View>
             )}
             </ScrollView>
