@@ -6,7 +6,7 @@ import { Company, JobAbout,JobFooter,JobTabs, ScreenHeaderBtn, Specifics} from '
 import {COLORS, icons, SIZES } from '../../constants'
 import useFetch from '../../hook/useFetch';
 // Array containning each tab option
-const tabs = ["About", "Qualifications", "Responsibilites"];
+const tabs = ["About", "Qualifications", "Responsibilities"];
 
 const JobDetails = () => {
     // this will get the job id of the page the user is on
@@ -36,7 +36,12 @@ const JobDetails = () => {
                     info={data[0].job_description ?? "No information Provided :("}
 
                 />
-            case "Responsibilites":
+            case "Responsibilities":
+                return <Specifics
+                    title="Responsibilities"
+                    // ?? if it doesnt have either highlights or qualifications then na will display
+                    points={data[0].job_highlights?.Responsibilities ?? ['N/A']}
+                />
               
             default:
                 break;
