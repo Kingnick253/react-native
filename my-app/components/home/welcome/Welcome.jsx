@@ -8,7 +8,7 @@ import styles from './welcome.style'
 
 const jobTypes = ["Full-time", "Part-time", "Contractor"];
 
-const Welcome = () => {
+const Welcome = ({searchTerm, setSearchTerm, handleClick }) => {
   // declaring router
   const router = useRouter();
   const [activeJobType, setActiveJobType] = useState("Full-time")
@@ -16,7 +16,7 @@ const Welcome = () => {
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.userName}>Testing Hello World </Text>
+        <Text style={styles.userName}>Welcome Nicholas </Text>
         <Text style={styles.welcomeMessage}>Find the Best Job for you </Text>
       </View>
       <View style={styles.searchContainer}>
@@ -25,14 +25,14 @@ const Welcome = () => {
         <TextInput 
           style={styles.searchInput}
           // this value will be a new state field 
-          value=''
-          onChange={() => {}}
+          value={searchTerm}
+          onChange={(text) => setSearchTerm(text)}
           placeholder="What are you looking for?"
           placeholderTextColor="black"
         />
        </View>
       {/* added styling to the button with and empty callback function, will add more later on. */}
-      <TouchableOpacity style={styles.searchBtn} onPress={() => {}}> 
+      <TouchableOpacity style={styles.searchBtn} onPress={handleClick}> 
         {/* this is adding a search button icon for the user to click when they fill in the container */}
         <Image
           source={icons.search}
